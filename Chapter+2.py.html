@@ -1,0 +1,716 @@
+
+# coding: utf-8
+
+# In[3]:
+
+
+x = np.linspace(0, 5, 50)
+y = np.linspace(0, 5, 50)[:, np.newaxis]
+z = np.sin(x) ** 10 + np.cos(10 + y * x) * np.cos(x)
+
+get_ipython().magic('matplotlib inline')
+import matplotlib.pyplot as plt
+plt.imshow(z, origin='lower', extent=[0, 5, 0, 5],
+cmap='viridis')
+plt.colorbar();
+
+
+
+
+# In[5]:
+
+
+import numpy as np
+import pandas as pd
+# use Pandas to extract rainfall inches as a NumPy array
+rainfall = pd.read_csv('https://raw.githubusercontent.com/jakevdp/PythonDataScienceHandbook/master/notebooks/data/Seattle2014.csv')['PRCP'].values
+inches = rainfall / 254 # 1/10mm -> inches
+inches.shape
+
+
+# In[6]:
+
+
+get_ipython().magic('matplotlib inline')
+import matplotlib.pyplot as plt
+import seaborn; seaborn.set()
+
+
+# In[7]:
+
+
+plt.hist(inches, 40);
+
+
+# In[8]:
+
+
+x = np.array([1,2,3,4,5])
+x < 3
+
+
+# In[9]:
+
+
+x > 3
+
+
+# In[10]:
+
+
+x <= 3 #Less than or equal
+
+
+# In[11]:
+
+
+x >= 3
+
+
+# In[12]:
+
+
+x != 3 #not equal to three
+
+
+# In[13]:
+
+
+x == 3
+
+
+# In[14]:
+
+
+(2 * x) == (x **2)
+
+
+# In[15]:
+
+
+rng = np.random.RandomState(0)
+x = rng.randint(10, size=(3,4))
+x
+
+
+# In[16]:
+
+
+x < 6
+
+
+# In[17]:
+
+
+print(x)
+
+
+# In[19]:
+
+
+#How many values are less than 6?
+np.count_nonzero(x < 6)
+
+
+# In[20]:
+
+
+np.sum(x < 6)
+
+
+# In[21]:
+
+
+#How many values are less than 6 in each row?
+np.sum(x < 6, axis = 1)
+
+
+# In[23]:
+
+
+#Are there any values that are greater than 8>
+np.any(x > 8)
+
+
+# In[24]:
+
+
+#Are there any vlaues less than zero>
+np.any(x < 0)
+
+
+# In[25]:
+
+
+#Are all values less than 10?
+np.all(x < 10)
+
+
+# In[26]:
+
+
+#Are all values equal to 6?
+np.all(x == 6)
+
+
+# In[29]:
+
+
+#Are all values in each row less than 8?
+np.all(x<8, axis=1)
+
+
+# In[30]:
+
+
+#Find the number of days where the rainfall was more than 1/2 inches and less than 1 inch
+np.sum((inches > 0.5)&(inches <1))
+
+
+# In[33]:
+
+
+#Doing the equiv. with the OR logic operator instead of AND
+np.sum(~((inches <= 0.5) | (inches >=1)))
+
+
+# In[34]:
+
+
+print("Number of days without rain:", np.sum(inches ==0))
+print("Number of days with rain:", np.sum(inches !=0))
+print("Number of days with more than 0.5 inches:",np.sum(inches>0.5))
+print("Rainy days with < 0.1 inches:", np.sum((inches>0)&(inches<0.2)))
+
+
+# In[35]:
+
+
+x
+
+
+# In[36]:
+
+
+x < 5
+
+
+# In[37]:
+
+
+x[x<5]
+
+
+# In[38]:
+
+
+#construct a mask of all rainy days
+rainy = (inches > 0)
+#construc a mask of all summer days(June 21st is the 172 day)
+summer = (np.arange(365)-172<90)&(np.arange(365)-172>0)
+print("Meidan precip on rainy days in 2014(inches):",np.median(inches[rainy]))
+print("Median precip of summer days in 2014(inches):",np.median(inches[summer]))
+print("Maximum precip on summer days in 2014(inches):",np.max(inches[summer]))
+print("Median precip on non-summer rainy days(inches):",np.median(inches[rainy&~summer]))
+
+
+# In[40]:
+
+
+import numpy as np
+rand = np.random.RandomState(42)
+
+x = rand.randint(100, size=10)
+print(x)
+
+
+# In[41]:
+
+
+[x[3],x[7],x[2]]
+#OR
+ind = [3,7,4]
+x[ind]
+
+
+# In[44]:
+
+
+ind = np.array([[3,7],[4,5]])
+x[ind]
+
+
+# In[45]:
+
+
+X = np.arange(12).reshape((3,4))
+X
+
+
+# In[46]:
+
+
+row = np.array([0,1,2])
+col = np.array([2,1,3])
+X[row,col]
+
+
+# In[47]:
+
+
+#Combining a column vector and a row vector within the indices
+X[row[:, np.newaxis],col]
+
+
+# In[48]:
+
+
+row[:,np.newaxis]*col
+
+
+# In[49]:
+
+
+print(X)
+
+
+# In[50]:
+
+
+#Combining fancy & simple indices
+X[2,[2,0,1]]
+
+
+# In[51]:
+
+
+#Combining fancy indexing w/ slicing
+X[1:,[2,0,1]]
+
+
+# In[52]:
+
+
+#Combining fancy indexing & masking
+mask = np.array([1,0,1,0], dtype=bool)
+X[row[:, np.newaxis],mask]
+
+
+# In[53]:
+
+
+mean = [0,0]
+cov = [[1,2],[2,5]]
+X = rand.multivariate_normal(mean, cov, 100)
+X.shape
+
+
+# In[54]:
+
+
+get_ipython().magic('matplotlib inline')
+import matplotlib.pyplot as plt
+import seaborn; seaborn.set()   #for plot styling
+plt.scatter(X[:,0],X[:,1]);
+
+
+# In[56]:
+
+
+indices = np.random.choice(X.shape[0], 20, replace=False)
+indices
+
+
+# In[57]:
+
+
+selection = X[indices]  #Fancy indexing used here
+selection.shape
+
+
+# In[59]:
+
+
+#Circle the points selected from the plot
+plt.scatter(X[:,0],X[:,1],alpha=0.3)
+plt.scatter(selection[:,0],selection[:,1], facecolor='none',s=200);
+
+
+# In[60]:
+
+
+#Modifying values with fancy indexing
+x = np.arange(10)
+i = np.array([2,1,8,4])
+x[i]=99
+print(x)
+
+
+# In[61]:
+
+
+#Problematic situation
+x = np.zeros(10)
+x[[0,0]]=[4,6]
+print(x)
+
+
+# In[62]:
+
+
+i = [2,3,3,4,4,4]
+x[i] += 1
+x
+
+
+# In[63]:
+
+
+#If you want operation to be repeated
+x = np.zeros(10)
+np.add.at(x,i,1)
+print(x)
+
+
+# In[64]:
+
+
+#Binning Data
+np.random.seed(42)
+x = np.random.randn(100)
+
+#Compute a histogram by hand
+bins = np.linspace(-5,5,20)
+counts = np.zeros_like(bins)
+
+#Find the appropriate bin for each x
+i = np.searchsorted(bins,x)
+
+#Add 1 to each of these bins
+np.add.at(counts,i,1)
+
+#Plot the results
+plt.plot(bins, counts, linestyle='steps');
+
+
+# In[65]:
+
+
+#In a single line
+plt.hist(x,bins, histtype='step');
+
+
+# In[66]:
+
+
+print("NumPy routine:")
+get_ipython().magic('timeit counts, edges = np.histogram(x,bins)')
+print("Custom routine:")
+get_ipython().magic('timeit np.add.at(counts, np.searchsorted(bins,x),1)')
+
+
+# In[68]:
+
+
+x = np.random.randn(1000000)
+print("NumPy routine:")
+get_ipython().magic('timeit counts, edges = np.histogram(x, bins)')
+
+print("Custom routine:")
+get_ipython().magic('timeit np.add.at(counts, np.searchsorted(bins,x),1)')
+
+
+# In[69]:
+
+
+#Simple selection sort repeatedly finds the min value from a list, makes swaps until list is sorted
+#Selection Sorting
+
+
+import numpy as np
+
+def selection_sort(x):
+    for i in range(len(x)):
+        swap = i + np.argmin(x[i:])
+        (x[i], x[swap]) = (x[swap],x[i])
+    return x
+
+x = np.array([2,1,4,3,5])
+selection_sort(x)
+
+
+# In[70]:
+
+
+#Bogosort, random sorting, honestly pretty poor sorting method
+
+def bogosort(x):
+    while np.any(x[:-1] > x[1:]):
+        np.random.shuffle(x)
+    return x
+
+x = np.array([2,1,4,3,5])
+bogosort(x)
+
+
+# In[71]:
+
+
+x = np.array([2,1,4,3,5])
+np.sort(x)
+
+
+# In[72]:
+
+
+x.sort()
+print(x)
+
+
+# In[73]:
+
+
+#argsort
+
+x = np.array([2,1,4,3,5])
+i = np.argsort(x)
+print(i)
+
+
+# In[74]:
+
+
+x[i]
+
+
+# In[75]:
+
+
+rand = np.random.RandomState(42)
+X = rand.randint(0,10,(4,6))
+print(X)
+
+
+# In[76]:
+
+
+#Sort each column of X
+np.sort(X, axis=0)
+
+
+# In[77]:
+
+
+#sort each row of X
+np.sort(X, axis=1)
+
+
+# In[78]:
+
+
+#Partial Sorts: Partitioning. np.partition takes an array and a number K;
+#the result is a new array w/ the smallest K value to the left of the
+#partition, and the remaining values to the right, in arbitrary order.
+
+x = np.array([7,2,3,1,6,5,4])
+np.partition(x,3)
+
+
+# In[79]:
+
+
+#Partition along an abitrary axis of a multidimensional array
+np.partition(X, 2, axis=1)
+
+
+# In[80]:
+
+
+#EXAMPLE: K-nearest neighbors
+
+X = rand.rand(10,2)
+get_ipython().magic('matplotlib inline')
+import matplotlib.pyplot as plt
+import seaborn; seaborn.set()
+plt.scatter(X[:,0],X[:,1],s=100);
+
+
+# In[81]:
+
+
+#Computing the matix of square distance in a single line of code
+Dist_sq = np.sum((X[:,np.newaxis,:]-X[np.newaxis,:,:]) **2, axis=-1)
+
+
+# In[84]:
+
+
+#A Breakdown of the line of code above
+#For each pair of points, compute differences in their coordinates
+differences = X[:, np.newaxis,:]-X[np.newaxis,:,:]
+differences.shape
+
+
+# In[85]:
+
+
+#Square the coordinate differences
+sq_differences = differences ** 2
+sq_differences.shape
+
+
+# In[86]:
+
+
+#sum the coordinate differences to get the squared distance
+dist_sq = sq_differences.sum(-1)
+dist_sq.shape
+
+
+# In[87]:
+
+
+#Diagonal of matrix should be zeros
+dist_sq.diagonal()
+
+
+# In[88]:
+
+
+nearest = np. argsort(dist_sq, axis = 1)
+print(nearest)
+
+
+# In[89]:
+
+
+#Partition each row so that the smallest K+1 squared distance comes first,
+#W/ larger distances filling the remaining positions of the array.
+K = 2
+nearest_partition = np.argpartition(dist_sq, K+1, axis=1)
+
+
+# In[92]:
+
+
+#Visualizing the network of neighbors
+plt.scatter(X[:,0],X[:,1], s=100)
+
+#Draw lines from each point to its two nearest neighbors
+K = 2
+
+for i in range(X.shape[0]):
+    for j in nearest_partition[i, :K+1]:
+        #Plot a line from X[i] to X[j]
+        #Use some zip magic to make it happen:
+        plt.plot(*zip(X[j],X[i]), color='black')
+
+
+# In[102]:
+
+
+#Compount, heterogeneous data
+
+name = ['Alice','Bob', 'Cathy', "Doug"]
+age = [25,45,37,19]
+weight = [55.0, 85.5, 68.0, 61.5]
+
+x=np.zeros(4,dtype=int)
+
+#Creating a structured array using a compound data type specifications
+data = np.zeros(4, dtype={'names':('name','age','weight'),'formats':
+                         ('U10','i4', 'f8')})
+print(data.dtype)
+
+
+# In[103]:
+
+
+#Fill the array with our lists of values
+data['name'] = name
+data['age'] = age
+data['weight'] = weight
+print(data)
+
+
+# In[105]:
+
+
+#Get all names
+data['name']
+
+
+# In[106]:
+
+
+#Get first row of data
+data[0]
+
+
+# In[107]:
+
+
+#Get the name from the last row
+data[-1]['name']
+
+
+# In[108]:
+
+
+#Get names where age is under 30
+data[data['age'] < 30]['name']
+
+
+# In[109]:
+
+
+#Structed array data using dictionary method
+np.dtype({'names':('names','age','weight'),
+         'formats':('U10','i4','f8')})
+
+
+# In[111]:
+
+
+np.dtype({'names':('name','age','weight'),
+          'formats':((np.str_, 10),int, np.float32)})
+
+
+# In[112]:
+
+
+np.dtype([('name','S10'),('age','i4'),('weight','f8')])
+
+
+# In[113]:
+
+
+np.dtype('S10,i4,f8')
+
+
+# In[115]:
+
+
+#Advanced Compound Types
+
+tp = np.dtype([('id','i8'),('mat','f8',(3,3))])
+X = np.zeros(1, dtype=tp)
+print(X[0])
+print(X['mat'][0])
+
+
+# In[116]:
+
+
+#Structured Arrays with a Twist
+data_rec = data.view(np.recarray)
+data_rec.age
+
+
+# In[118]:
+
+
+get_ipython().magic("timeit data['age']")
+get_ipython().magic("timeit data_rec['age']")
+get_ipython().magic('timeit data_rec.age')
+
