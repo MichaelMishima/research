@@ -1,7 +1,23 @@
 //notes on subjects PI asked me to research
 
 STATISTICS
-- what is variance?
+-variance: Var{x}=E[x^2}-E{E}^2. '
+-mean (expectation value, E)L x_bar = <x> = sum(p_i x x_i)
+-discrete so sum over function f and multiply by the corresponding probability
+  -this probability (p_i) is restricted to the interval [0,1].
+-for continuous variable:
+  -probability density P(x) s.t. P(x)dx = probability finding x between x and dx
+  
+- <f(x)> = integral{f(x)P(x)dx}
+
+Planck's Constant:
+  -related to the quantization of light and matter
+  -energy multiplied by time, or momentum multiplied by distance, or angular momentum(pseudo vector- tensor)
+  -expressed in Joule-Seconds (JS , or NMS, or Kg M^2 S^-1)
+  -planch-einstein relation connects the particular photon energy E with its associated wave frequency: E = hf
+  -conceived as a prop. constant between the min increment of E of a hypothetical charged oscillator in a cavity that contains
+   black-body radiation, and the frequecy f, of its associated electromagnetic wave
+
 
 VOLTAGES
 - voltage of a battery: 1.5v
@@ -12,7 +28,57 @@ IONIZATION
 
 PHOTONS
 - energy of a green photon?
-- how does light interact with matter?
 
-CELESTIAL COORDINATE SYSTEMS
-- look up
+  -energy: 2.17 - 2.5 eV 
+   
+ 
+- how does light interact with matter?
+-
+
+CELESTIAL COORDINATE SYSTEMS:
+
+-Equatorial:
+  -centered at Earth's center, fixed relative to the celestial poles and vernal quinox
+  -based on locations of stars reltive to Earth's equation if it were prjected out to an infinite distance
+  -normal coordinate system (follows the movement of the sky during the night)
+
+
+-Ecliptic:
+  -the fundamental plane is the plane of Earth's orbit
+  -two pricipal variants:
+     -geocentric: useful for computing the apparent motions of the Sun, Mood, and other solar system bodies
+     -heliocentric: useful for computing the positions of solar bodies as well as defining their orbital elements
+ 
+-galactic: 
+  -uses the approximate plane of our galaxy as its fundamental plane. Solar system still the center of the coordinate sys
+  -Zero point is defined as the direction towards the galactice center
+  -Lattitude resembles the elevation above the galactic plane and galactic longitudde determines direction relative to 
+   the center of the galaxy.
+   
+-SuperGalactic
+  -Corresponds to a fundamental plane that contains a higher than average number of local galaxies in the sky as seen from Earth.
+  
+
+
+Azimuth:
+  -An angular measurement in a spherical coordinate system.
+  -Bector from an observer (origin) to a point of interest is projected normally onto a reference frame
+  -Angle between the projected bector and a reference bector on the reference plane is called the azimuth.
+
+
+
+Gamma Rays(GR):
+  -penetrating electromagnetic radiation of a kind arising from the radioactive decay of atomic neclei
+  -defined by their energy, ranging to over 10TeV(1e13 eV)
+  -this energy is too large to be a product of radioactive decay
+  -GR bursts are are thought to be due to the collapse of stars called hypernovae
+  -produced by a number of astronomical processes in which very high-energy electrons are produced
+  -such electrons produce secondary GR by the following;
+    -Bremsstrahlu
+    
+    
+    
+Inverse Compton Scattering:
+  -charged particals (usually electrons) impart energy. to low-energy photons boosting them to higher energy photons
+  -such impacts of photons on relativistic charged particle beams is another possible mechanism of GR production. 
+  
