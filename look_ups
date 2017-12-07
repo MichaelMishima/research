@@ -1,5 +1,17 @@
 //notes on subjects PI asked me to research
 
+Why is glass transparent?
+
+Photons pass through glass because they're not absorbed. This is because there is nothing which "absorbs"light in the visual
+frequencies. UV photons are absorbed by glass, so glass is not transparent for them. Exactly the same happens w/ XR for which
+our pody is nearly transparent whilst a metal plate absorbs it.
+
+Any photon has a certain frequency- which for bisible light is related to the color of light, whilst for lower or higher 
+frequencies in the electromagnetic spectrum, it is simply a measure of the energy transported by the photon. A materal's 
+absorbsion 
+
+
+
 STATISTICS
 -variance: Var{x}=E[x^2}-E{E}^2. '
 -mean (expectation value, E)L x_bar = <x> = sum(p_i x x_i)
@@ -19,6 +31,30 @@ Planck's Constant:
    black-body radiation, and the frequecy f, of its associated electromagnetic wave
 
 
+Ionization energy:
+
+  -Defined as the amount of energy required to remove the most loosely bound electron, the valence electron,
+   of an isolated gaseous atom to form a cation.
+   
+  -Quantitatively expressed in sysbols as:
+    X + energy -> X^+ + e^-
+      X is any atom or molecule capable of being inonized, 
+      X^+ is that atom or molecule w/ an electron removed,
+      e^- is the removed electron
+      
+    this is an endothermic process. generally, the closer the electrons are to the nucleus of the
+    atom, the higher the atom's ionization energy
+ 
+ 
+  In Physics, unit is the amount of energy required to remove a single electron from a single atom or molecule expressed
+  in electron volt (eV). 
+  
+  In Chemistry, unit is the amount of energy it takes for 
+ 
+  
+
+
+
 VOLTAGES
 - voltage of a battery: 1.5v
 - voltage of a car battery: 9v, 6 cylinders
@@ -28,24 +64,28 @@ IONIZATION
 
 PHOTONS
 - energy of a green photon?
-
-  -energy: 2.17 - 2.5 eV 
-   
+- mass < 1e-18 eV/c^2 
+- spin 1
+  -energy of green photon: 2.17 - 2.5 eV, f= 540 THz (540e12 Hz) lambda 495-570 nanometers 
+- the gauge boson for EM, and therefore all other quantum numbers of the photon (such as leptop number, baryon number,
+  and flavour quantum number) are zero
+  
+- does not obey the Pauli exclusion principle 
  
 - how does light interact with matter?
 -
 
 CELESTIAL COORDINATE SYSTEMS:
 
--Equatorial:
-  -centered at Earth's center, fixed relative to the celestial poles and vernal quinox
-  -based on locations of stars reltive to Earth's equation if it were prjected out to an infinite distance
-  -normal coordinate system (follows the movement of the sky during the night)
+- Equatorial:
+  - centered at Earth's center, fixed relative to the celestial poles and vernal quinox
+  - based on locations of stars reltive to Earth's equation if it were prjected out to an infinite distance
+  - normal coordinate system (follows the movement of the sky during the night)
 
 
--Ecliptic:
-  -the fundamental plane is the plane of Earth's orbit
-  -two pricipal variants:
+- Ecliptic:
+  - the fundamental plane is the plane of Earth's orbit
+  - two pricipal variants:
      -geocentric: useful for computing the apparent motions of the Sun, Mood, and other solar system bodies
      -heliocentric: useful for computing the positions of solar bodies as well as defining their orbital elements
  
